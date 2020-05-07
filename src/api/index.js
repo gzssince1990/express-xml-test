@@ -28,7 +28,7 @@ export default ({ config, db }) => {
 		const question2 = message_tag.ele('question', { id: 124, type: 'checkbox', condition: 'post_submit' })
 		question2.ele('text', 'How is team WaterSky')
 		question2.ele('anwser', { id: 2 }, 'Awesome')
-		question2.ele('anwser', { id: 3 }, 'Aaaaaaaaawesome')
+		// question2.ele('anwser', { id: 3 }, 'Aaaaaaaaawesome')
 		const question3 = message_tag.ele('question', { id: 125, type: 'manual', condition: 'post_submit' })
 		question3.ele('text', 'What is your favorite sport')
 		question3.ele('answer', { id: 4, autofill: 4 }, 'Basketball')
