@@ -15,11 +15,11 @@ export default ({ config, db }) => {
 	});
 
 	const render_xml = (req, res) => {
-		console.log(req)
+		console.log(req.body)
 		let xml_tag = builder.create('xml')
 		let message_tag = xml_tag.ele('message')
-		let status_tag = message_tag.ele('status', 1)
-		let text_tag = message_tag.ele('text', 'please review item "A12X"')
+		message_tag.ele('status', 1)
+		message_tag.ele('text', 'please review item "A12X"')
 		let xml = xml_tag.end({ pretty: true });
 		// console.log(xml)
 		res.set('Content-Type', 'text/xml');

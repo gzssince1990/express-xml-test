@@ -24,6 +24,8 @@ app.use(bodyParser.json({
 	limit : config.bodyLimit
 }));
 
+app.use(express.urlencoded())
+
 // app.use(xmlparser());
 
 // connect to db
