@@ -17,7 +17,7 @@ export default ({ config, db }) => {
 	const first_on_the_fly_question = (req, res) => {
 		const scanid = req.body.scanid
 		const answers = req.body.answers
-		const wrong_answer = answers['124'] !== ''
+		const wrong_answer = answers['124'] !== null
 		const status = wrong_answer ? 0 : 1
 		const text = wrong_answer ? 'wrong anwser!!!' : `please review item '${tid}'`
 
@@ -63,6 +63,10 @@ export default ({ config, db }) => {
 		const message_tag = xml_tag.ele('message')
 		message_tag.ele('status', 1)
 		message_tag.ele('text', "Now you finished everything!!!")
+		const xml = xml_tag.end({ pretty: true });
+		console.log(xml)
+		res.set('Content-Type', 'text/xml');
+		res.send(xml)
 	}
 
 	api.get('/xml', (req, res) => {
