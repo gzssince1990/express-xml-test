@@ -22,7 +22,7 @@ export default ({ config, db }) => {
 		message_tag.ele('status', 1)
 		message_tag.ele('text', `please review item '${tid}'`)
 		message_tag.ele('scanid', 'SCAN_ID_IF_DSU')
-		const question1 = message_tag.ele('question')
+		const question1 = message_tag.ele('question', { id: 123, type: "manual", condition: "post_submit"})
 		question1.ele('text', 'How is team WaterSky')
 		question1.ele('answer', { id: 1, autofill: 1}, 'awesome')
 		const xml = xml_tag.end({ pretty: true });
