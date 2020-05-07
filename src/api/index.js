@@ -15,6 +15,7 @@ export default ({ config, db }) => {
 	});
 
 	const first_on_the_fly_question = (req, res) => {
+		const tid = req.body.tid
 		const scanid = req.body.scanid
 		const answers = req.body.answers
 		const wrong_answer = answers['124'] !== undefined
