@@ -17,7 +17,7 @@ export default ({ config, db }) => {
 	const first_on_the_fly_question = (req, res) => {
 		const scanid = req.body.scanid
 		const answers = req.body.answers
-		const wrong_answer = answers['124'] !== null
+		const wrong_answer = answers['124'] !== undefined
 		const status = wrong_answer ? 0 : 1
 		const text = wrong_answer ? 'wrong anwser!!!' : `please review item '${tid}'`
 
@@ -79,7 +79,7 @@ export default ({ config, db }) => {
 		const answers = req.body.answers
 		if (answers['124'] !== 'Aaaaaaaaawesome') {
 			first_on_the_fly_question(req, res)
-		} else if (answers['126' === '']) {
+		} else if (answers['126' === undefined]) {
 			second_on_the_fly_question(req, res)
 		} else {
 			normal_question(req, res)
