@@ -15,12 +15,17 @@ export default ({ config, db }) => {
 	});
 
 	const render_xml = (req, res) => {
-		console.log(req.body)
-		let xml_tag = builder.create('xml')
-		let message_tag = xml_tag.ele('message')
+		const tid = req.body.tid
+
+		const xml_tag = builder.create('xml')
+		const message_tag = xml_tag.ele('message')
 		message_tag.ele('status', 1)
-		message_tag.ele('text', 'please review item "A12X"')
-		let xml = xml_tag.end({ pretty: true });
+		message_tag.ele('text', `please review item '${tid}'`)
+		message_tag.ele('scanid', 'SCAN_ID_IF_DSU')
+		const question1 = message_tag.ele('question')
+		question1.ele('text', 'How is team WaterSky')
+		question1.ele('answer', { id: 1, autofill: 1}, 'awesome')
+		const xml = xml_tag.end({ pretty: true });
 		// console.log(xml)
 		res.set('Content-Type', 'text/xml');
 		res.send(xml)
@@ -30,6 +35,8 @@ export default ({ config, db }) => {
 	});
 
 	api.post('/xml', (req, res) => {
+		console.log(req.body)
+
 		render_xml(req, res)
 	});
 
