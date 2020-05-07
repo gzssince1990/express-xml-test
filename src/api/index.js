@@ -14,10 +14,23 @@ export default ({ config, db }) => {
 		res.json({ version });
 	});
 
-	api.get('/xml', (req, res) => {
-		let xml = builder.create('test', 'test').end({ pretty: true });
+	const render_xml = (req, res) => {
+		console.log(req)
+		let xml_tag = builder.create('xml')
+		let message_tag = xml_tag.ele('message')
+		let status_tag = message_tag.ele('status', 1)
+		let text_tag = message_tag.ele('text', 'please review item "A12X"')
+		let xml = xml_tag.end({ pretty: true });
+		// console.log(xml)
 		res.set('Content-Type', 'text/xml');
 		res.send(xml)
+	}
+	api.get('/xml', (req, res) => {
+		render_xml(req, res)
+	});
+
+	api.post('/xml', (req, res) => {
+		render_xml(req, res)
 	});
 
 	return api;
