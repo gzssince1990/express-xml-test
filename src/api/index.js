@@ -22,9 +22,13 @@ export default ({ config, db }) => {
 		message_tag.ele('status', 1)
 		message_tag.ele('text', `please review item '${tid}'`)
 		message_tag.ele('scanid', 'SCAN_ID_IF_DSU')
-		const question1 = message_tag.ele('question', { id: 123, type: "manual", condition: "post_submit"})
-		question1.ele('text', 'How is team WaterSky')
-		question1.ele('answer', { id: 1, autofill: 1}, 'awesome')
+		const question1 = message_tag.ele('question', { id: 123, type: 'manual', condition: 'post_submit' })
+		question1.ele('text', 'What is your favorite sport')
+		question1.ele('answer', { id: 1, autofill: 1}, 'Soccer')
+		const question2 = message_tag.ele('question', { id: 124, type: 'option', condition: 'post_submit' })
+		question2.ele('text', 'How is team WaterSky')
+		question2.ele('anwser', { id: 2}, 'Awesome i guess?')
+		question2.ele('anwser', { id: 3}, 'Awesome!!!')
 		const xml = xml_tag.end({ pretty: true });
 		// console.log(xml)
 		res.set('Content-Type', 'text/xml');
@@ -36,6 +40,7 @@ export default ({ config, db }) => {
 
 	api.post('/xml', (req, res) => {
 		console.log(req.body)
+
 
 		render_xml(req, res)
 	});
