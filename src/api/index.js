@@ -80,7 +80,7 @@ export default ({ config, db }) => {
 		const answers = req.body.answers
 		if (answers['124'] !== 'Aaaaaaaaawesome') {
 			first_on_the_fly_question(req, res)
-		} else if (answers['126' === undefined]) {
+		} else if (answers['126'] === undefined) {
 			second_on_the_fly_question(req, res)
 		} else {
 			normal_question(req, res)
