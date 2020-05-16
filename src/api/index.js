@@ -54,8 +54,8 @@ export default ({ config, db }) => {
 			return null
 		}
 
-		console.log(findItemByScanVal(scanVal).id)
-		console.log(ITEMS[findItemByScanVal(scanVal).id])
+		console.log('next item id: ', findItemByScanVal(scanVal).id)
+		console.log('next item: ', ITEMS[findItemByScanVal(scanVal).id])
 
 		return ITEMS[findItemByScanVal(scanVal).id]
 	}
