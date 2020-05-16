@@ -41,7 +41,7 @@ export default ({ config, db }) => {
 
 	const findItemByScanVal = (scanVal) => {
 		return ITEMS.find((item) => {
-			item.name === scanVal
+			return item.name === scanVal
 		})
 	}
 
